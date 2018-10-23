@@ -16,20 +16,19 @@
 #include "cvcamera.h"
 #include "cvgloble.h"
 #include <iostream>
+#include <string>
 #include <QObject>
 #include <QMutex>
 #include <qdatetime.h>
 #include <QDebug>
 #include <QThread>
 #include <windows.h>
-#ifdef RASPI
-#include "piserialconnect.h"
-#else
-#include "serialconnect.h"
-#endif
-#define scale 0.8
+#include "Vibe.h"
+
+#define scale 1
 #pragma comment(lib, "Gdi32.lib")
 #pragma comment(lib,"user32.lib")
+using namespace std;
 class imgworker : public QObject
 {
     Q_OBJECT
@@ -38,9 +37,15 @@ public:
     /**
      * @brief locateimg locate the point of coffee bean
      * @param input
-     * @return
+     * @return 定位咖啡豆
      */
     bool locateimg();
+    /**
+     * @brief detectimg
+     * @return
+     * 运动检测，看是否有咖啡豆入内
+     */
+    bool detectimg();
     /**
      * @brief classifyimg classify the bean
      * @param input
@@ -62,6 +67,7 @@ signals:
     void workRequested();
     //已经结束工作
     void finished();
+    void sendstr(QString);
 public slots:
     void doWork();//do something
 private :
@@ -70,11 +76,14 @@ private :
     QMutex inmutex;//类里变量的锁
     cv::Mat m_beanmat;
     cv::Mat m_inputmat;
+    cv::Mat vmat;
     bool m_bresult;
-    bool m_btrainmode=false;
+    bool m_btrainmode=true;
     cv::Point m_plocatepoint;
     QString m_snowtime;
     int count=0;
+    ViBe_BGS m_vibe;
+    bool m_inited=false;
 };
 
 #endif // IMGWORKER_H

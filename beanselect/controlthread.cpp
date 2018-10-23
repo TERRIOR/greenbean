@@ -16,15 +16,17 @@ controlthread::controlthread(QObject *parent) : QObject(parent)
     //connect(m_pimgworker, SIGNAL(imgchange()),this, SLOT(refleshmat()));//与ui结合时用
     connect(m_pimgworker, SIGNAL(workRequested()), imgthread, SLOT(start()));//1,worker请求，触发thread的start
     connect(imgthread, SIGNAL(started()), m_pimgworker, SLOT(doWork()));//2,start后 dowork(实质工作的地方)
+    connect(m_pimgworker, SIGNAL(sendstr(QString)), this, SLOT(sendtopre(QString)));
     connect(m_pimgworker, SIGNAL(finished()), imgthread, SLOT(quit()), Qt::DirectConnection);
 
-    mcuthread = new QThread();
-    m_pmcuworker = new mcuworker();
-    m_pmcuworker->moveToThread(mcuthread);
-    //connect(m_pimgworker, SIGNAL(imgchange()),this, SLOT(refleshmat()));//与ui结合时用
-    connect(m_pmcuworker, SIGNAL(workRequested()), mcuthread, SLOT(start()));//1,worker请求，触发thread的start
-    connect(mcuthread, SIGNAL(started()), m_pmcuworker, SLOT(doWork()));//2,start后 dowork(实质工作的地方)
-    connect(m_pmcuworker, SIGNAL(finished()), mcuthread, SLOT(quit()), Qt::DirectConnection);
+//    mcuthread = new QThread();
+//    m_pmcuworker = new mcuworker();
+//    m_pmcuworker->moveToThread(mcuthread);
+//    //connect(m_pimgworker, SIGNAL(imgchange()),this, SLOT(refleshmat()));//与ui结合时用
+//    connect(m_pmcuworker, SIGNAL(workRequested()), mcuthread, SLOT(start()));//1,worker请求，触发thread的start
+//    connect(mcuthread, SIGNAL(started()), m_pmcuworker, SLOT(doWork()));//2,start后 dowork(实质工作的地方)
+//    connect(m_pmcuworker, SIGNAL(send()), this, SLOT(sendtocom()));
+//    connect(m_pmcuworker, SIGNAL(finished()), mcuthread, SLOT(quit()), Qt::DirectConnection);
 }
 controlthread::controlthread(bool uicall)
 :m_uicall(uicall)
@@ -42,17 +44,19 @@ controlthread::controlthread(bool uicall)
 controlthread::~controlthread()
 {
     delete camthread;
-    delete mcuthread;
+    delete m_camworker;
+    camthread=NULL;
+    m_camworker=NULL;
+
     delete imgthread;
     delete m_pimgworker;
-    delete m_pmcuworker;
-    delete m_camworker;
-    mcuthread=NULL;
     imgthread=NULL;
-    camthread=NULL;
     m_pimgworker=NULL;
-    m_pmcuworker=NULL;
-    m_camworker=NULL;
+
+//    delete mcuthread;
+//    delete m_pmcuworker;
+//    mcuthread=NULL;
+//    m_pmcuworker=NULL;
     cout<<"release control"<<endl;
 }
 
@@ -61,6 +65,17 @@ void controlthread::refleshmat()//做监控
     int size;
     size= cvcam->queuesize();
     //cout<<"reflesh: "<<size<<endl;
+}
+
+void controlthread::sendtocom()
+{
+    g_serialconnect.send();
+}
+
+void controlthread::sendtopre(QString str)
+{
+    g_serialconnect.sendfast(str.toStdString());
+    //cout<<g_serialconnect.receive()<<endl;
 }
 
 void controlthread::stopcamthread()
@@ -111,12 +126,14 @@ void controlthread::startimgthread(bool mode)
         m_pimgworker->abort();
         imgthread->wait();
         m_pimgworker->requestWork();
+
         m_imgopened=true;
     }
 }
 void controlthread::startmcuthread()
 {
-    if(!m_imgopened){
+    cout<<"request mcu"<<endl;
+    if(!m_mcuopened){
         m_pmcuworker->abort();
         mcuthread->wait();
         m_pmcuworker->requestWork();

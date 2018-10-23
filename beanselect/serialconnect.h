@@ -3,6 +3,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 #include <QtSerialPort/QSerialPort>
 #include <queue>
+#include <stdlib.h>
 #include <iostream>
 using namespace std;
 class serialconnect
@@ -21,6 +22,7 @@ public:
     void init();
     void setcom(string com);
     string getcom();
+    bool sendfast(string strtemp);
 private:
     QSerialPort my_serialport;
     QByteArray requestData;

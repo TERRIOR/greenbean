@@ -7,11 +7,6 @@
 **/
 #ifndef MCUWORKER_H
 #define MCUWORKER_H
-#ifdef RASPI
-#include "piserialconnect.h"
-#else
-#include "serialconnect.h"
-#endif
 #include <iostream>
 #include <QObject>
 #include <QMutex>
@@ -34,6 +29,7 @@ signals:
     void workRequested();
     //已经结束工作
     void finished();
+    void send();
 public slots:
     void doWork();//do something
 private :

@@ -13,6 +13,11 @@
 #include "mcuworker.h"
 #include "cvcamera.h"
 #include "imgworker.h"
+#ifdef RASPI
+#include "piserialconnect.h"
+#else
+#include "serialconnect.h"
+#endif
 class  controlthread : public QObject
 {
     Q_OBJECT
@@ -31,7 +36,8 @@ signals:
     void callui();
 public slots:
     void refleshmat();
-
+    void sendtocom();
+    void sendtopre(QString);
 private:
 
     QThread *camthread;

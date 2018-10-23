@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     initform();
     creatcvcam();
     tmrTimer = new QTimer(this);
+    pTimer = new QTimer(this);
+    pTimer->setSingleShot(true);
+    connect(pTimer,SIGNAL(timeout()),this,SLOT(closecom()));
     connect(tmrTimer,SIGNAL(timeout()),this,SLOT(updategui()));
     conthread=creatimgthread();
     initcom();
@@ -18,7 +21,9 @@ MainWindow::~MainWindow()
     conthread->release();
     conthread=NULL;
     delete tmrTimer;
+    delete pTimer;
     tmrTimer=NULL;
+    pTimer=NULL;
     cvcam->release();
     delete ui;
 }
@@ -38,11 +43,10 @@ void MainWindow::initform()
         this->setStyleSheet(qss);
         file.close();
     }
-
     //showMaximized();
 }
 void MainWindow::initcom(){
-    vector<string> comstring=Serialconnect.getdevicename();
+    vector<string> comstring=g_serialconnect.getdevicename();
     vector<string>::iterator iterator=comstring.begin();
     ui->com->addItem(tr("none"));
     for(;iterator!=comstring.end();iterator++){
@@ -71,25 +75,35 @@ void MainWindow::on_pushButton_max_clicked()
 
 void MainWindow::on_pushButton_close_clicked()
 {
+    g_serialconnect.sendfast("b0");
+    Sleep(100);
+    g_serialconnect.sendfast("d10");
+    //延时关闭串口
+    pTimer->start(1000);
+    closecam();
+    closeimg();
     close();
 }
 void MainWindow::opencom(){
-    if(!g_serialconnect.getisstarted()&&
-            ui->com->currentText().toStdString()=="none"){
+    if(!g_serialconnect.getisstarted()&&ui->com->currentText().toStdString()!="none"){
         if(!g_serialconnect.start(ui->com->currentText().toStdString())){
-            //QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("打开串口失败"));
+            QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("打开串口失败"));
+
             return ;
         }
-//        g_serialconnect.send();
-        conthread->startmcuthread();//打开mcu线程
-        g_serialconnect.presend("b1");
+        //conthread->startmcuthread();//打开mcu线程
+        Sleep(1500);
+        g_serialconnect.sendfast("b1");
+        Sleep(500);//等待初始化成功
     }
 }
 void MainWindow::closecom(){
     if(g_serialconnect.getisstarted()){
-        g_serialconnect.presend("b0");
+        //g_serialconnect.sendfast("b0");
+        //conthread->sendtopre(QString::fromStdString("b0"));
+        cout<<"send     b0"<<endl;
         g_serialconnect.end();
-        conthread->stopmcuthread();
+
     }
 }
 void MainWindow::opencam(){
@@ -149,21 +163,28 @@ void MainWindow::updategui()
 void MainWindow::on_pushButton_clicked()
 {
     //start
-    opencam();
     opencom();
+    opencam();
+    Sleep(3000);
     openimg();
     //cvcam->clearqueue();
     if(tmrTimer->isActive() == false){
-        tmrTimer->start(20);
+        tmrTimer->start(50);
     }
+
     
 }
 
 
 void MainWindow::on_pushButton_stop_clicked()
 {
+
+    g_serialconnect.sendfast("b0");
+    Sleep(100);
+    g_serialconnect.sendfast("d10");
+    //延时关闭串口
+    pTimer->start(1000);
     closecam();
-    closecom();
     closeimg();
     if(tmrTimer->isActive()==true){
         tmrTimer->stop();
@@ -174,7 +195,7 @@ void MainWindow::on_pushButton_pause_toggled(bool checked)
 {
     if(!checked){
         if(tmrTimer->isActive()==false){
-            tmrTimer->start(20);
+            tmrTimer->start(50);
         }
         ui->pushButton_pause->setText(QString::fromLocal8Bit("暂停"));
     }else{
@@ -183,4 +204,10 @@ void MainWindow::on_pushButton_pause_toggled(bool checked)
         }
         ui->pushButton_pause->setText(QString::fromLocal8Bit("继续"));
     }
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    g_serialconnect.sendfast("b0");
+    //g_serialconnect.send();
 }

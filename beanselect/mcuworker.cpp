@@ -29,6 +29,7 @@ void mcuworker::abort()
 
 void mcuworker::doWork()
 {
+    //g_serialconnect.start(g_serialconnect.getcom());
     while(1){
         inmutex.lock();
         bool abort = _abort;
@@ -37,12 +38,14 @@ void mcuworker::doWork()
             qDebug()<<"Aborting worker process in Thread "<<thread()->currentThreadId();
             break;
         }
-        g_serialconnect.send();
+        //cout<<"mcu"<<endl;
+        emit send();
+        //cout<<"rec:"<<g_serialconnect.receive()<<endl;
         //outmutex.lock();
         //TODO:添加运行操作
         //outmutex.unlock();
         //emit imgchange();
-        Sleep(0);
+        Sleep(100);
     }
     emit finished();
 }

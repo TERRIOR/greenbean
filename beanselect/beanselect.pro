@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     mcuworker.cpp \
     imgworker.cpp \
     piserialconnect.cpp \
-    serialconnect.cpp
+    serialconnect.cpp \
+    Vibe.cpp
 
 HEADERS  += mainwindow.h \
     camsetdialog.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     mcuworker.h \
     imgworker.h \
     piserialconnect.h \
-    serialconnect.h
+    serialconnect.h \
+    Vibe.h
 
 FORMS    += mainwindow.ui \
     camsetdialog.ui

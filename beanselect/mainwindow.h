@@ -45,11 +45,11 @@ public:
      * @brief initcom 初始化串口，显示名字
      */
     void initcom();
-    void closecom();
     void opencom();
     void openimg();
     void closeimg();
 private slots:
+    void closecom();
     void updategui();
     void on_pushButton_min_clicked();
     void on_pushButton_max_clicked();
@@ -58,12 +58,15 @@ private slots:
     void on_pushButton_stop_clicked();
     void on_pushButton_pause_toggled(bool checked);
 
+    void on_pushButton_4_clicked();
+
 private:
-    serialconnect Serialconnect;
+    //serialconnect Serialconnect;
     Ui::MainWindow *ui;
     QRect location;
     bool m_bmode=true;
     QTimer *tmrTimer=NULL;
+    QTimer *pTimer=NULL;
     bool max;
     controlthread* conthread=NULL;
 

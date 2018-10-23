@@ -1,0 +1,56 @@
+﻿生成启动时间为 2018/10/22 14:16:59。
+     1>项目“E:\QTPROJECT\greenbean\beanselect\beanselect.vcxproj”在节点 2 上(Build 个目标)。
+     1>CustomBuild:
+         Moc'ing camsetdialog.h...
+         Moc'ing camworker.h...
+         Moc'ing controlthread.h...
+         Moc'ing imgworker.h...
+         Moc'ing mainwindow.h...
+         Moc'ing mcuworker.h...
+         Uic'ing camsetdialog.ui...
+         Uic'ing mainwindow.ui...
+         Rcc'ing main.qrc...
+         Rcc'ing qss.qrc...
+       ClCompile:
+         E:\vs2013\VC\bin\CL.exe /c /I. /I..\..\..\opencv\opencv\build\include\opencv2 /I..\..\..\opencv\opencv\build\include\opencv /I..\..\..\opencv\opencv\build\include /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtWidgets /I..\..\..\qt\qt5.7.0\5.7\msvc2013include\QtGui /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtANGLE /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtSerialPort /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtCore /Idebug /I"E:\Qt\Qt5.7.0\5.7\msvc2013_64\mkspecs\win32-msvc2013" /I.\GeneratedFiles /IE:\vs2013\VC\include /Zi /nologo /W3 /WX- /Od /Oy- /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SERIALPORT_LIB /D QT_CORE_LIB /D QT_DLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /wd4577 /analyze- /errorReport:prompt -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 Debug\moc_camsetdialog.cpp Debug\moc_camworker.cpp Debug\moc_controlthread.cpp Debug\moc_imgworker.cpp Debug\moc_mainwindow.cpp Debug\moc_mcuworker.cpp camsetdialog.cpp camworker.cpp controlthread.cpp cvcamera.cpp cvcamera_g.cpp cvgloble.cpp imgworker.cpp main.cpp mainwindow.cpp mcuworker.cpp qgloble.cpp
+     1>cl : 命令行 warning D9002: 忽略未知选项“-Zc:throwingNew”
+         moc_camsetdialog.cpp
+     1>e:\qtproject\greenbean\beanselect\debug\../camsetdialog.h(11): fatal error C1083: 无法打开包括文件: “QDialog”: No such file or directory
+         moc_camworker.cpp
+     1>e:\qtproject\greenbean\beanselect\debug\../camworker.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         moc_controlthread.cpp
+     1>e:\qtproject\greenbean\beanselect\debug\../controlthread.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         moc_imgworker.cpp
+     1>e:\qtproject\greenbean\beanselect\cvcamera.h(18): fatal error C1083: 无法打开包括文件: “QFile”: No such file or directory
+         moc_mainwindow.cpp
+     1>e:\qtproject\greenbean\beanselect\debug\../mainwindow.h(4): fatal error C1083: 无法打开包括文件: “qmessagebox.h”: No such file or directory
+         moc_mcuworker.cpp
+     1>e:\qtproject\greenbean\beanselect\debug\../mcuworker.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         camsetdialog.cpp
+     1>e:\qtproject\greenbean\beanselect\camsetdialog.h(11): fatal error C1083: 无法打开包括文件: “QDialog”: No such file or directory
+         camworker.cpp
+     1>e:\qtproject\greenbean\beanselect\camworker.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         controlthread.cpp
+     1>e:\qtproject\greenbean\beanselect\controlthread.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         cvcamera.cpp
+     1>e:\qtproject\greenbean\beanselect\cvcamera.h(18): fatal error C1083: 无法打开包括文件: “QFile”: No such file or directory
+         cvcamera_g.cpp
+     1>e:\qtproject\greenbean\beanselect\cvcamera.h(18): fatal error C1083: 无法打开包括文件: “QFile”: No such file or directory
+         cvgloble.cpp
+     1>e:\qtproject\greenbean\beanselect\cvgloble.h(16): fatal error C1083: 无法打开包括文件: “QImage”: No such file or directory
+         imgworker.cpp
+     1>e:\qtproject\greenbean\beanselect\cvcamera.h(18): fatal error C1083: 无法打开包括文件: “QFile”: No such file or directory
+         main.cpp
+     1>e:\qtproject\greenbean\beanselect\mainwindow.h(4): fatal error C1083: 无法打开包括文件: “qmessagebox.h”: No such file or directory
+         mainwindow.cpp
+     1>e:\qtproject\greenbean\beanselect\mainwindow.h(4): fatal error C1083: 无法打开包括文件: “qmessagebox.h”: No such file or directory
+         mcuworker.cpp
+     1>e:\qtproject\greenbean\beanselect\mcuworker.h(11): fatal error C1083: 无法打开包括文件: “QObject”: No such file or directory
+         qgloble.cpp
+     1>e:\qtproject\greenbean\beanselect\qgloble.h(10): fatal error C1083: 无法打开包括文件: “QDir”: No such file or directory
+         正在生成代码...
+     1>已完成生成项目“E:\QTPROJECT\greenbean\beanselect\beanselect.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:05.24

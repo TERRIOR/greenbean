@@ -1,0 +1,37 @@
+﻿生成启动时间为 2018/10/22 20:35:57。
+     1>项目“E:\QTPROJECT\greenbean\beanselect\beanselect.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\vs2013\VC\bin\x86_amd64\CL.exe /c /I. /I..\..\..\opencv\opencv\build\include\opencv2 /I..\..\..\opencv\opencv\build\include\opencv /I..\..\..\opencv\opencv\build\include /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtWidgets /I..\..\..\qt\qt5.7.0\5.7\msvc2013include\QtGui /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtANGLE /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtSerialPort /I..\..\..\qt\qt5.7.0\5.7\msvc2013\include\QtCore /Idebug /I"E:\Qt\Qt5.7.0\5.7\msvc2013_64\mkspecs\win32-msvc2013" /I.\GeneratedFiles /IE:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtCore /IE:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtGui /IE:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtOpenGL /IE:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtWidgets /IE:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtScript /Zi /nologo /W3 /WX- /Od /D _WINDOWS /D UNICODE /D WIN32 /D QT_WIDGETS_LIB /D QT_GUI_LIB /D QT_SERIALPORT_LIB /D QT_CORE_LIB /D QT_DLL /D QT_OPENGL_LIB /D QT_SCRIPT_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /wd4577 /errorReport:prompt -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 imgworker.cpp
+     1>cl : 命令行 warning D9002: 忽略未知选项“-Zc:throwingNew”
+         imgworker.cpp
+     1>e:\qtproject\greenbean\beanselect\Vibe.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>imgworker.cpp(16): warning C4189: “conscale”: 局部变量已初始化但不引用
+       Link:
+         E:\vs2013\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\QTPROJECT\greenbean\beanselect\x64\Debug\\beanselect.exe" /NOLOGO /LIBPATH:E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib /LIBPATH:C:\utils\postgresql\pgsql\lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib /LIBPATH:E:\opencv\opencv\build\x64\vc12\lib E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib\qtmaind.lib shell32.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_objdetect2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_ts2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_video2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_nonfree2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_ocl2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_photo2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_stitching2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_superres2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_videostab2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_calib3d2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_contrib2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_core2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_features2d2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_flann2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_gpu2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_highgui2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_imgproc2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_legacy2412d.lib E:\opencv\opencv\build\x64\vc12\lib\opencv_ml2412.lib E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib\Qt5Widgetsd.lib E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib\Qt5Guid.lib E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib\Qt5SerialPortd.lib E:\Qt\Qt5.7.0\5.7\msvc2013_64\lib\Qt5Cored.lib Qt5Cored.lib Qt5Guid.lib Qt5OpenGLd.lib opengl32.lib glu32.lib Qt5Widgetsd.lib Qt5Scriptd.lib libopenblas.dll.a halconcpp.lib opencv_highgui2412.lib opencv_core2412.lib opencv_ml2412.lib opencv_calib3d2412.lib opencv_contrib2412.lib opencv_features2d2412.lib opencv_flann2412.lib opencv_gpu2412.lib opencv_imgproc2412.lib opencv_legacy2412.lib opencv_objdetect2412.lib opencv_ts2412.lib opencv_video2412.lib opencv_nonfree2412.lib opencv_ocl2412.lib opencv_photo2412.lib opencv_stitching2412.lib opencv_superres2412.lib opencv_videostab2412.lib opencv_highgui2412d.lib opencv_core2412d.lib opencv_ml2412d.lib opencv_calib3d2412d.lib opencv_contrib2412d.lib opencv_features2d2412d.lib opencv_flann2412d.lib opencv_gpu2412d.lib opencv_imgproc2412d.lib opencv_legacy2412d.lib opencv_objdetect2412d.lib opencv_ts2412d.lib opencv_video2412d.lib opencv_nonfree2412d.lib opencv_ocl2412d.lib opencv_photo2412d.lib opencv_stitching2412d.lib opencv_superres2412d.lib opencv_videostab2412d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\QTPROJECT\greenbean\beanselect\x64\Debug\beanselect.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" x64\Debug\moc_camsetdialog.obj
+         x64\Debug\moc_camworker.obj
+         x64\Debug\moc_controlthread.obj
+         x64\Debug\moc_imgworker.obj
+         x64\Debug\moc_mainwindow.obj
+         x64\Debug\moc_mcuworker.obj
+         x64\Debug\qrc_main.obj
+         x64\Debug\qrc_qss.obj
+         x64\Debug\Vibe.obj
+         x64\Debug\camsetdialog.obj
+         x64\Debug\camworker.obj
+         x64\Debug\controlthread.obj
+         x64\Debug\cvcamera.obj
+         x64\Debug\cvcamera_g.obj
+         x64\Debug\cvgloble.obj
+         x64\Debug\imgworker.obj
+         x64\Debug\main.obj
+         x64\Debug\mainwindow.obj
+         x64\Debug\mcuworker.obj
+         x64\Debug\piserialconnect.obj
+         x64\Debug\qgloble.obj
+         x64\Debug\serialconnect.obj
+         beanselect.vcxproj -> E:\QTPROJECT\greenbean\beanselect\x64\Debug\beanselect.exe
+     1>已完成生成项目“E:\QTPROJECT\greenbean\beanselect\beanselect.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.11
