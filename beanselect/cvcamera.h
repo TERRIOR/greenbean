@@ -8,7 +8,6 @@
 #ifndef CVCAMERA_H
 #define CVCAMERA_H
 #include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/contrib/contrib.hpp"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/video/background_segm.hpp"
@@ -19,8 +18,9 @@
 #include <QTextStream>
 #include <QDataStream>
 #define  SAVE_DATA          "CAM_SAVE.zv"
-using namespace cv;
+
 using namespace std;
+namespace cv {
 
 class  cvcamera
 {
@@ -74,7 +74,8 @@ private:
     int max=10;
     int m_icount=0;
 };
-extern  cvcamera *cvcam;
-extern  QMutex outmutex;
+}
 
+extern  cv::cvcamera *cvcam;
+extern  QMutex outmutex;
 #endif // OPENCVCAMERA_H

@@ -1,4 +1,5 @@
 ﻿#include "cvcamera.h"
+namespace cv {
 
 cvcamera *cvcam=NULL;
 QMutex outmutex;
@@ -195,3 +196,4 @@ void cvcamera::loadData()
     }
 }
 
+}

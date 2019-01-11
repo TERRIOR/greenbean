@@ -1,4 +1,5 @@
 ﻿#include "cvgloble.h"
+namespace cv {
 
 void scalemat(Mat &mat,float scale){
 //        Mat mat1,mat2;
@@ -238,4 +239,5 @@ double getThreshVal_Otsu_8u_mask(const Mat &src, const Mat& mask)
         }
     }
     return max_val;
+}
 }

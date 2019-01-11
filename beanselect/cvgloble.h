@@ -8,7 +8,6 @@
 #ifndef CVGLOBLE_H
 #define CVGLOBLE_H
 #include "opencv2/calib3d/calib3d.hpp"
-#include "opencv2/contrib/contrib.hpp"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/video/background_segm.hpp"
@@ -18,13 +17,12 @@
 #include <iostream>
 
 using namespace std;
-using namespace cv;
-void scalemat(Mat &mat,float scale);
-void getimgroi(Mat& mat,const float scale);
-QImage Mat2QImage(Mat image1);
-void imrotate(Mat& img, Mat& newIm, double angle,Point2f pt);
-double Entropy(Mat img);
-double getfuza(Mat &img);
-void imshowMany(const std::string& _winName, const vector<Mat>& _imgs);
+void scalemat(cv::Mat &mat,float scale);
+void getimgroi(cv::Mat& mat,const float scale);
+QImage Mat2QImage(cv::Mat image1);
+void imrotate(cv::Mat& img, cv::Mat& newIm, double angle,cv::Point2f pt);
+double Entropy(cv::Mat img);
+double getfuza(cv::Mat &img);
+void imshowMany(const std::string& _winName, const vector<cv::Mat>& _imgs);
 
 #endif // CVGLOBLE_H
