@@ -1,18 +1,17 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "controlthread.h"
 #include <qmessagebox.h>
 #include <QMainWindow>
 #include <qfile>
 #include <QtCore>
-#include <QtGui>
 #include "qtimer.h"
 #include <QMainWindow>
 #include <QDesktopWidget>
 #include <QMouseEvent>
 #include <QAbstractButton>
 #include "cvcamera_g.h"
-#include "controlthread.h"
 #ifdef RASPI
 #include "piserialconnect.h"
 #else
@@ -64,7 +63,7 @@ private:
     //serialconnect Serialconnect;
     Ui::MainWindow *ui;
     QRect location;
-    bool m_bmode=true;
+    bool m_bmode=false;
     QTimer *tmrTimer=NULL;
     QTimer *pTimer=NULL;
     bool max;

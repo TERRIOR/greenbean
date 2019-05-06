@@ -75,7 +75,8 @@ void MainWindow::on_pushButton_max_clicked()
 
 void MainWindow::on_pushButton_close_clicked()
 {
-    g_serialconnect.sendfast("b0");
+//    g_serialconnect.sendfast("b0");//步进电机版本
+    g_serialconnect.sendfast("m0");//直流电机版本
     Sleep(100);
     g_serialconnect.sendfast("d10");
     //延时关闭串口
@@ -93,7 +94,8 @@ void MainWindow::opencom(){
         }
         //conthread->startmcuthread();//打开mcu线程
         Sleep(1500);
-        g_serialconnect.sendfast("b1");
+//        g_serialconnect.sendfast("b1");//步进电机版本
+        g_serialconnect.sendfast("m1");//直流电机版本
         Sleep(500);//等待初始化成功
     }
 }

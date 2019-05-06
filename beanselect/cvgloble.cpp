@@ -1,7 +1,6 @@
 ﻿#include "cvgloble.h"
-namespace cv {
 
-void scalemat(Mat &mat,float scale){
+void scalemat(cv::Mat &mat,float scale){
 //        Mat mat1,mat2;
 //        mytime time1;
 //        time1.TimerStart();
@@ -10,20 +9,20 @@ void scalemat(Mat &mat,float scale){
 //        time1.TimerStart();
 //        pyrDown( mat, mat1, Size( mat.cols*scale, mat.rows*scale ) );
 //        cout<<"resize:"<<time1.TimerFinish()<<endl;
-    resize(mat,mat,Size(mat.cols*scale,mat.rows*scale),0,0,CV_INTER_AREA);
+    cv::resize(mat,mat,cv::Size(mat.cols*scale,mat.rows*scale),0,0,CV_INTER_AREA);
 }
-void getimgroi(Mat& mat,const float scale){
+void getimgroi(cv::Mat& mat,const float scale){
     int cols=mat.cols;
     int rows=mat.rows;
     int offsety=(rows-scale*rows)/2;
     int offsetx=(cols-scale*cols)/2;
-    mat=mat(Rect(offsetx,offsety,cols*scale,rows*scale));
+    mat=mat(cv::Rect(offsetx,offsety,cols*scale,rows*scale));
 }
-void imrotate(Mat& img, Mat& newIm, double angle,Point2f pt){
-    Mat r = getRotationMatrix2D(pt,angle,1.0);
-    warpAffine(img,newIm,r,Size(img.cols,img.rows));
+void imrotate(cv::Mat& img, cv::Mat& newIm, double angle,cv::Point2f pt){
+    cv::Mat r = cv::getRotationMatrix2D(pt,angle,1.0);
+    warpAffine(img,newIm,r,cv::Size(img.cols,img.rows));
 }
-double Entropy(Mat img)
+double Entropy(cv::Mat img)
 {
     // 将输入的矩阵为图像
     double temp[256];
@@ -61,7 +60,7 @@ double Entropy(Mat img)
     }
     return result;
 }
-double getfuza(Mat &img){
+double getfuza(cv::Mat &img){
 
     int height = img.rows;
     int width = img.cols;
@@ -92,11 +91,11 @@ double getfuza(Mat &img){
     std::cout << "variance:" << variance;
     return variance;
 }
-void imshowMany(const std::string& _winName, const vector<Mat>& _imgs)
+void imshowMany(const std::string& _winName, const vector<cv::Mat>& _imgs)
 {
     int nImg = (int)_imgs.size();
 
-    Mat dispImg;
+    cv::Mat dispImg;
 
     int size;
     int x, y;
@@ -150,7 +149,7 @@ void imshowMany(const std::string& _winName, const vector<Mat>& _imgs)
         size = 150;
     }
 
-    dispImg.create(Size(100 + size*w, 60 + size*h), 0);
+    dispImg.create(cv::Size(100 + size*w, 60 + size*h), 0);
 
     for (int i= 0, m=20, n=20; i<nImg; i++, m+=(20+size))
     {
@@ -166,15 +165,15 @@ void imshowMany(const std::string& _winName, const vector<Mat>& _imgs)
             n += 20+size;
         }
 
-        Mat imgROI = dispImg(Rect(m, n, (int)(x/scale), (int)(y/scale)));
-        resize(_imgs[i], imgROI, Size((int)(x/scale), (int)(y/scale)));
+        cv::Mat imgROI = dispImg(cv::Rect(m, n, (int)(x/scale), (int)(y/scale)));
+        cv::resize(_imgs[i], imgROI, cv::Size((int)(x/scale), (int)(y/scale)));
     }
 
-    namedWindow(_winName);
-    imshow(_winName, dispImg);
+    cv::namedWindow(_winName);
+    cv::imshow(_winName, dispImg);
 }
 
-QImage Mat2QImage(Mat image1)
+QImage Mat2QImage(cv::Mat image1)
 {
     QImage img;
     //image1=image;
@@ -192,7 +191,7 @@ QImage Mat2QImage(Mat image1)
 
     return img;
 }
-double getThreshVal_Otsu_8u_mask(const Mat &src, const Mat& mask)
+double getThreshVal_Otsu_8u_mask(const cv::Mat &src, const cv::Mat& mask)
 {
     const int N = 256;
     int M = 0;
@@ -240,4 +239,4 @@ double getThreshVal_Otsu_8u_mask(const Mat &src, const Mat& mask)
     }
     return max_val;
 }
-}
+

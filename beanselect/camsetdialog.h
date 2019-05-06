@@ -8,6 +8,7 @@
 #ifndef CAMSETDIALOG_H
 #define CAMSETDIALOG_H
 
+#include "controlthread.h"
 #include <QDialog>
 #include "cvcamera.h"
 #include <QAbstractButton>
@@ -15,7 +16,6 @@
 #include "qglobal.h"
 #include "qgloble.h"
 #include "cvgloble.h"
-#include "controlthread.h"
 #include <QTimer>
 #include <QFile>
 #include <QTextStream>

@@ -8,11 +8,11 @@
 #ifndef CONTROLTHREAD_H
 #define CONTROLTHREAD_H
 
-#include <QObject>
+#include "imgworker.h"
 #include "camworker.h"
 #include "mcuworker.h"
 #include "cvcamera.h"
-#include "imgworker.h"
+#include <QObject>
 #ifdef RASPI
 #include "piserialconnect.h"
 #else

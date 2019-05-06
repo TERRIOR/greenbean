@@ -5,7 +5,6 @@
 #-------------------------------------------------
 
 QT       += core gui
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport
 #arm版本打开注释
 #DEFINES += RASPI
@@ -14,10 +13,12 @@ TEMPLATE = app
 RESOURCES += \
     main.qrc \
     qss.qrc
-
-win32{
+CONFIG += console
+CONFIG += c++11
+DEFINES += NOMINMAX GLOG_NO_ABBREVIATED_SEVERITIES
 
 DEFINES+=USE_OPENCV
+
 INCLUDEPATH += E:\caffe\cudainclude\include
 INCLUDEPATH += C:\Users\zhuojun\.caffe\dependencies\libraries_v120_x64_py27_1.1.0\libraries\include\opencv
 INCLUDEPATH += E:\caffe\caffe\include
@@ -27,7 +28,7 @@ INCLUDEPATH += C:\Users\zhuojun\.caffe\dependencies\libraries_v120_x64_py27_1.1.
 INCLUDEPATH += C:\Users\zhuojun\.caffe\dependencies\libraries_v120_x64_py27_1.1.0\libraries\include\boost-1_61
 
 LIBS += -LC:\Users\zhuojun\.caffe\dependencies\libraries_v120_x64_py27_1.1.0\libraries\lib
-LIBS += -lglog -lgflags  -llmdb -lleveldb -llibprotobuf -llmdb
+LIBS += -lglog -lgflags  -llmdb -lleveldb  -llmdb
 LIBS += -lsnappy -lcaffehdf5_hl -lcaffehdf5 -lcaffezlib
 LIBS += libopenblas.dll.a
 
@@ -47,6 +48,24 @@ LIBS += -lcurand -lcusolver -lcusparse -lnppc -lnppi -lnpps -lnvblas -lnvcuvid -
 
 LIBS += -LE:\Anaconda2\libs
 LIBS += -lpython27
+
+win32:CONFIG(debug, debug|release): {
+
+LIBS += -LE:\opencv310\opencv\build\x64\vc12\lib
+LIBS += -lopencv_world310d
+
+LIBS += -LE:\caffe\caffe\scripts\build\lib\Debug
+LIBS += -lcaffe-d -lcaffeproto-d
+LIBS += -llibprotobufd
+
+} else:win32:CONFIG(release, debug|release): {
+
+LIBS += -LE:\caffe\caffe\scripts\build\lib\Release
+LIBS += -lcaffe -lcaffeproto
+
+LIBS += -LE:\opencv310\opencv\build\x64\vc12\lib
+LIBS += -lopencv_world310
+LIBS += -llibprotobuf
 }
 
 
@@ -63,7 +82,8 @@ SOURCES += main.cpp\
     imgworker.cpp \
     piserialconnect.cpp \
     serialconnect.cpp \
-    Vibe.cpp
+    Vibe.cpp \
+    caffeclassify.cpp
 
 HEADERS  += mainwindow.h \
     camsetdialog.h \
@@ -77,10 +97,16 @@ HEADERS  += mainwindow.h \
     imgworker.h \
     piserialconnect.h \
     serialconnect.h \
-    Vibe.h
+    Vibe.h \
+    caffeclassify.h \
+    header.h
 
 FORMS    += mainwindow.ui \
     camsetdialog.ui
+
+
+
+
 
 
 #win32 {
@@ -88,26 +114,6 @@ FORMS    += mainwindow.ui \
 #INCLUDEPATH += E:\opencv\opencv\build\include\opencv
 #INCLUDEPATH += E:\opencv\opencv\build\include
 #}
-
-
-
-win32:CONFIG(debug, debug|release): {
-
-LIBS += -LE:\opencv310\opencv\build\x64\vc12\lib
-LIBS += -lopencv_world310d
-
-LIBS += -LE:\caffe\caffe\scripts\build\lib\Debug
-LIBS += -lcaffe-d -lcaffeproto-d
-
-} else:win32:CONFIG(release, debug|release): {
-
-LIBS += -LE:\caffe\caffe\scripts\build\lib\Release
-LIBS += -lcaffe -lcaffeproto
-
-LIBS += -LE:\opencv310\opencv\build\x64\vc12\lib
-LIBS += -lopencv_world310
-}
-
 #win32:CONFIG(debug, debug|release): {
 
 #LIBS += -LE:\opencv\opencv\build\x64\vc12\lib \

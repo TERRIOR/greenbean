@@ -1,11 +1,11 @@
 ﻿#include "cvcamera.h"
-namespace cv {
+
 
 cvcamera *cvcam=NULL;
 QMutex outmutex;
 cvcamera::cvcamera()
 {
-    capture=new VideoCapture();
+    capture=new cv::VideoCapture();
     loadData();
 }
 
@@ -132,17 +132,17 @@ void cvcamera::clearqueue()
     cout<<"cleared:  "<<camimgque.size()<<endl;
 }
 
-Mat cvcamera::getmCameraImg() const
+cv::Mat cvcamera::getmCameraImg() const
 {
     return m_mCameraImg;
 }
 
-void cvcamera::setMCameraImg(const Mat &mCameraImg)
+void cvcamera::setMCameraImg(const cv::Mat &mCameraImg)
 {
     m_mCameraImg = mCameraImg;
 }
 
-Mat cvcamera::getlastestimg()
+cv::Mat cvcamera::getlastestimg()
 {
     int size=camimgque.size();
     cout<<size<<endl;
@@ -152,7 +152,7 @@ Mat cvcamera::getlastestimg()
     return lastestmat;
 }
 
-Mat cvcamera::getLastestmat() const
+cv::Mat cvcamera::getLastestmat() const
 {
     return lastestmat;
 }
@@ -172,7 +172,7 @@ bool cvcamera::opencamed()
     return capture->isOpened();
 }
 
-VideoCapture *cvcamera::getCapture() const
+cv::VideoCapture *cvcamera::getCapture() const
 {
     return capture;
 }
@@ -196,4 +196,4 @@ void cvcamera::loadData()
     }
 }
 
-}
+

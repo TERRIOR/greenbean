@@ -17,10 +17,9 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDataStream>
-#define  SAVE_DATA          "CAM_SAVE.zv"
+#define  SAVE_DATA  "CAM_SAVE.zv"
 
 using namespace std;
-namespace cv {
 
 class  cvcamera
 {
@@ -40,15 +39,15 @@ public:
     //关闭相机
     bool closecamera();
     void clearqueue();
-    Mat getmCameraImg() const;
-    void setMCameraImg(const Mat &mCameraImg);
-    Mat getlastestimg();
-    Mat getLastestmat() const;
+    cv::Mat getmCameraImg() const;
+    void setMCameraImg(const cv::Mat &mCameraImg);
+    cv::Mat getlastestimg();
+    cv::Mat getLastestmat() const;
 
     int getMax() const;
     void setMax(int value);
     bool opencamed();
-    VideoCapture *getCapture() const;
+    cv::VideoCapture *getCapture() const;
 
     void loadData();
     void cap();
@@ -58,9 +57,9 @@ public:
     void jcount();
 private:
     int m_iCameraId=0;//相机的识别码 如“0”（暂定）
-    VideoCapture *capture;//VideoCapture
-    Mat m_mCameraImg;//输出的Mat
-    queue<Mat> camimgque;
+    cv::VideoCapture *capture;//VideoCapture
+    cv::Mat m_mCameraImg;//输出的Mat
+    queue<cv::Mat> camimgque;
     int m_iWidth=-1;//图像宽度
     int m_iHight=-1;//图像高度
     int m_iFps=-1;//图像帧数
@@ -69,13 +68,13 @@ private:
     int m_iContrast=-1;//图像对比度
     int m_iHue=-1;//图像色度
     int m_iSaturation=-1;//图像饱和度
-    Mat lastestmat;
-    Mat m_temp;
+    cv::Mat lastestmat;
+    cv::Mat m_temp;
     int max=10;
     int m_icount=0;
 };
-}
 
-extern  cv::cvcamera *cvcam;
+
+extern  cvcamera *cvcam;
 extern  QMutex outmutex;
 #endif // OPENCVCAMERA_H

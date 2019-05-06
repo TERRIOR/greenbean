@@ -7,11 +7,11 @@
 **/
 #ifndef CVCAMERA_G_H
 #define CVCAMERA_G_H
+#include "controlthread.h"
 #include "cvcamera.h"
 #include "qdialog.h"
 #include "camsetdialog.h"
 #include "camworker.h"
-#include "controlthread.h"
 void __stdcall creatcvcam();
 cvcamera* __stdcall destroycvcam();
 cvcamera* __stdcall getcvcam();
